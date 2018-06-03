@@ -23,9 +23,6 @@
 hs_err_pid*
 /.metadata/
 
-
-# myignore
+#myingnore
 Servers/
-amall/build/classes/DataSource.properties
-amall/src/DataSource.properties
-amall/src/DataSource.properties
+DataSource.properties
