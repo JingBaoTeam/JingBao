@@ -21,7 +21,7 @@ public class ActionUserBackController {
 	private ActionUserService userService;
 
 	/**
-	 * 前台用户登录
+	 * 前台管理员登录
 	 * @param account
 	 * @param password
 	 * @param session
