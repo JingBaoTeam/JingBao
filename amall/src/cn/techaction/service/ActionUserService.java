@@ -17,4 +17,11 @@ public interface ActionUserService {
 	 * @return
 	 */
 	public SverResponse<ActionUser> doLogin(String account,String password);
+	/**
+	 * 注册新用户
+	 * @param user
+	 * @return
+	 */
+	public SverResponse<String> doRegister(ActionUser user);
+	
 }

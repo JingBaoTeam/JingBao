@@ -1,5 +1,7 @@
 package cn.techaction.service.impl;
 
+import java.util.Date;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,5 +44,23 @@ public class ActionUserServiceImpl implements ActionUserService {
 			return SverResponse.createRespBySuccess();
 		}
 		return SverResponse.createRespByError();
+	}
+
+	@Override
+	public SverResponse<String> doRegister(ActionUser user) {
+		int rs = userDao.checkUserByAccount(user.getAccount());
+		if(rs==0) {
+			return SverResponse.createByErrorMessage("用户不存在！");
+		}
+		user.setRole(ConstUtil.Role.ROLE_CUSTOMER);
+		user.setPassword(MD5Util.MD5Encode(user.getPassword(), "UTF-8", false));
+		Date curDate = new Date();
+		user.setCreate_time(curDate);
+		user.setUpdate_time(curDate);
+		rs = userDao.insertUser(user);
+		if(rs==0) {
+			return SverResponse.createByErrorMessage("注册失败！");
+		}
+		return  SverResponse.createRespBySuccessMessage("注册成功！");
 	}
 }
