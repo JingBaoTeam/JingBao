@@ -119,6 +119,7 @@ public class ActionUserController {
 	@RequestMapping(value="/resetpassword.do",method = RequestMethod.POST)
 	@ResponseBody
 	public SverResponse<String> resetPassword(String account,String newpwd,String token){
+		//TODO resetPasswd
 		return null;
 	}
 	
@@ -132,7 +133,8 @@ public class ActionUserController {
 	@RequestMapping(value="/updatepassword.do",method = RequestMethod.POST)
 	@ResponseBody
 	public SverResponse<String> updatePassword(HttpSession session,String newpwd,String oldpwd){
-		ActionUser user = (ActionUser)session.getAttribute(ConstUtil.CUR_USER);
+		//TODO changepasswd
+		//ActionUser user = (ActionUser)session.getAttribute(ConstUtil.CUR_USER);
 		return null;
 	}
 	
@@ -145,6 +147,7 @@ public class ActionUserController {
 	@RequestMapping(value="/updateuserinfo.do",method = RequestMethod.POST)
 	@ResponseBody
 	public SverResponse<ActionUser> updateUserInfo(HttpSession session,ActionUser user){
+		//TODO change user info
 		return null;
 	}
 	
