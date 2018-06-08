@@ -20,10 +20,10 @@ public class ActionProductServiceImpl implements ActionProductService {
 	public SverResponse<PageBean<ActionProduct>> findProducts(Integer productId, Integer partsId, Integer pageNum,
 			Integer pageSize) {
 		// TODO Auto-generated method stub
-		// ²éÕÒ·ûºÏÌõ¼şµÄ×Ü¼ÇÂ¼Êı
+		// æŸ¥æ‰¾ç¬¦åˆæ¡ä»¶çš„æ€»è®°å½•æ•°
 		int totalRecord = productDao.getTotalCount(productId, partsId);
 		PageBean<ActionProduct> pageBean = new PageBean<>(pageNum, pageSize, totalRecord);
-		// ²éÑ¯·ûºÏÌõ¼şµÄÊı¾İ
+		// æŸ¥è¯¢ç¬¦åˆæ¡ä»¶çš„æ•°æ®
 		List<ActionProduct> data = productDao.findProductsByTypeId(productId, partsId, pageBean.getStartIndex(),
 				pageBean.getPageSize());
 		 pageBean.setData(data);
