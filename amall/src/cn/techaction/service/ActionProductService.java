@@ -6,14 +6,14 @@ import cn.techaction.utils.PageBean;
 
 public interface ActionProductService {
 	/**
-	 * 查询商品信息
+	 * 鏌ヨ鍟嗗搧淇℃伅
 	 * 
 	 * @param productId
-	 *            产品编号
+	 *            浜у搧缂栧彿
 	 * @param partsId
-	 *            配件编号
+	 *            閰嶄欢缂栧彿
 	 * @param pageNum
-	 *            当前页码
+	 *            褰撳墠椤电爜
 	 * @param pageSize
 	 * @return
 	 */

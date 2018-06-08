@@ -6,7 +6,7 @@ import cn.techaction.pojo.ActionProduct;
 
 public interface ActionProductDao {
 	/**
-	 * 查询符合条件的总记录数
+	 * 鏌ヨ绗﹀悎鏉′欢鐨勬�昏褰曟暟
 	 * 
 	 * @param productId
 	 * @param partsId
@@ -15,7 +15,7 @@ public interface ActionProductDao {
 	public int getTotalCount(Integer productId, Integer partsId);
 
 	/**
-	 * 分页查询
+	 * 鍒嗛〉鏌ヨ
 	 * 
 	 * @param productId
 	 * @param partsId
