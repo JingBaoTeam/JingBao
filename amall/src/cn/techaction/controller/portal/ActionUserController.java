@@ -29,7 +29,6 @@ public class ActionUserController {
 	@RequestMapping(value="/do_login.do",method = RequestMethod.POST)
 	@ResponseBody
 	public SverResponse<ActionUser> dologin(String account, String password, HttpSession session){
-		//TODO do user login
 		SverResponse<ActionUser> response = userService.doLogin(account, password);
 		if(response.isSuccess()) {
 			ActionUser user = response.getData();
@@ -64,8 +63,7 @@ public class ActionUserController {
 	@RequestMapping(value="/do_check_info.do",method = RequestMethod.POST)
 	@ResponseBody
 	public SverResponse<String> checkInfo(String info, String type){
-		//TODO checkInfo
-		return null;
+		return userService.doCheckInfo(info, type);
 	}
 	
 	/**

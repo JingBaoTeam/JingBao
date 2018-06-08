@@ -63,4 +63,20 @@ public class ActionUserServiceImpl implements ActionUserService {
 		}
 		return  SverResponse.createRespBySuccessMessage("注册成功！");
 	}
+
+	@Override
+	public SverResponse<String> doCheckInfo(String info, String type) {
+		if(type.equals("account")) {
+			int rs = userDao.checkUserByAccount(info);
+			if(rs == 0) return SverResponse.createRespBySuccess("信息验证成功");
+			else return SverResponse.createByErrorMessage("用户名已经存在");
+		}else if(type.equals("email")) {
+			int rs = userDao.checkUserByEmail(info);
+			if(rs == 0) return SverResponse.createRespBySuccess("信息验证成功");
+			else return SverResponse.createByErrorMessage("Email已经存在");
+		}else if(type.equals("phone")) {
+			if(userDao.checkUserByPhone(info) == 0) return SverResponse.createRespBySuccess("信息验证成功");
+			else return SverResponse.createByErrorMessage("电话号码已经存在！");
+		}else return SverResponse.createByErrorMessage("信息验证类别错误！");
+	}
 }

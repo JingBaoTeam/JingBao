@@ -23,5 +23,11 @@ public interface ActionUserService {
 	 * @return
 	 */
 	public SverResponse<String> doRegister(ActionUser user);
-	
+	/**
+	 * 注册信息检测
+	 * @param info
+	 * @param type
+	 * @return
+	 */
+	public SverResponse<String> doCheckInfo(String info, String type);
 }
