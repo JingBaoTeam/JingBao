@@ -89,8 +89,7 @@ public class ActionUserController {
 	@RequestMapping(value="/getuserquestion.do",method = RequestMethod.POST)
 	@ResponseBody
 	public SverResponse<String> getUserQue(String account){
-		//TODO getUserQuestion
-		return null;
+		return userService.getUserQue(account);
 	}
 	
 	/**
@@ -103,8 +102,7 @@ public class ActionUserController {
 	@RequestMapping(value="/checkuserasw.do",method = RequestMethod.POST)
 	@ResponseBody
 	public SverResponse<String> checkUserAsw(String account,String question,String asw){
-		//TODO check
-		return null;
+		return userService.doCheckAws(account, question, asw);
 	}
 	
 	/**
@@ -117,8 +115,7 @@ public class ActionUserController {
 	@RequestMapping(value="/resetpassword.do",method = RequestMethod.POST)
 	@ResponseBody
 	public SverResponse<String> resetPassword(String account,String newpwd,String token){
-		//TODO resetPasswd
-		return null;
+		return userService.resetPassword(account, newpwd, token);
 	}
 	
 	/**
@@ -131,9 +128,8 @@ public class ActionUserController {
 	@RequestMapping(value="/updatepassword.do",method = RequestMethod.POST)
 	@ResponseBody
 	public SverResponse<String> updatePassword(HttpSession session,String newpwd,String oldpwd){
-		//TODO changepasswd
-		//ActionUser user = (ActionUser)session.getAttribute(ConstUtil.CUR_USER);
-		return null;
+		ActionUser user = (ActionUser)session.getAttribute(ConstUtil.CUR_USER);
+		return userService.updatePassword(user, newpwd, oldpwd);
 	}
 	
 	/**
@@ -145,8 +141,19 @@ public class ActionUserController {
 	@RequestMapping(value="/updateuserinfo.do",method = RequestMethod.POST)
 	@ResponseBody
 	public SverResponse<ActionUser> updateUserInfo(HttpSession session,ActionUser user){
-		//TODO change user info
-		return null;
+		ActionUser curUser = (ActionUser)session.getAttribute(ConstUtil.CUR_USER);
+	    if(curUser == null){
+	       return SverResponse.createByErrorMessage("用户尚未登录");
+	    }
+	    user.setId(curUser.getId());
+	    user.setAccount(curUser.getAccount());
+	    user.setRole(curUser.getRole());
+	    user.setCreate_time(curUser.getCreate_time());
+	    SverResponse<ActionUser> resp= userService.updateUserInfo(user);
+	    if(resp.isSuccess()) {
+	    	session.setAttribute(ConstUtil.CUR_USER, resp.getData());
+	    }
+		return resp;
 	}
 	
 	/**
