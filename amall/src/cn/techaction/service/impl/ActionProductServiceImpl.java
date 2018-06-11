@@ -19,11 +19,8 @@ public class ActionProductServiceImpl implements ActionProductService {
 	@Override
 	public SverResponse<PageBean<ActionProduct>> findProducts(Integer productId, Integer partsId, Integer pageNum,
 			Integer pageSize) {
-		// TODO Auto-generated method stub
-		// 查找符合条件的总记录数
 		int totalRecord = productDao.getTotalCount(productId, partsId);
 		PageBean<ActionProduct> pageBean = new PageBean<>(pageNum, pageSize, totalRecord);
-		// 查询符合条件的数据
 		List<ActionProduct> data = productDao.findProductsByTypeId(productId, partsId, pageBean.getStartIndex(),
 				pageBean.getPageSize());
 		 pageBean.setData(data);
