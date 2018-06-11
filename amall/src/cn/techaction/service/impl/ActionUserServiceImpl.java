@@ -85,7 +85,7 @@ public class ActionUserServiceImpl implements ActionUserService {
 	public SverResponse<String> getUserQue(String account) {
 		String mess = userDao.findUserQuestion(account);
 		if(mess == null) return SverResponse.createByErrorMessage("未设置密码提示问题！");
-		else return SverResponse.createRespBySuccess(mess);
+		else return SverResponse.createRespBySuccessMessage(mess);
 	}
 
 	@Override

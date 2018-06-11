@@ -34,8 +34,10 @@ public class ActionUserController {
 			ActionUser user = response.getData();
 			session.setAttribute(ConstUtil.CUR_USER, user);
 			return response;
+		}else {
+			System.out.println("error");
+			return null;
 		}
-		return null;
 	}
 	/**
 	 * 用户注册

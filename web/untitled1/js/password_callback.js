@@ -28,9 +28,15 @@ $(function(){
     })
 
 //获取问题
+    
     $("#username").blur(function(){
         if(!Isname){ return checkname();}
-        $.post(xsite+"/user/getuserquestion.do", $("#username").text(),function(rs){
+        console.log($("#username").val());
+        console.log(typeof($("#username").val()));
+        var User= {
+            account:$("#username").val()
+        }
+        $.post(xsite+"/user/getuserquestion.do", User,function(rs){
             console.log(rs);
             $("#question").html(rs.msg);
         })
