@@ -9,14 +9,14 @@ $(function(){
 
 //清空购物车
     $("#clear").click(function(){
-        $.get(xsite+"/cart/clearcarts.do",function(data){
-            if(data.status==0){
+        $.get(xsite+"/cart/clearcarts.do",function(rs){
+            if(rs.status==0){
                 //console.log(data.status);
                 $("#cart-empty").css("display","block");
                 $("#cart-container").css("display","none");
             }
             else{
-                alert(data.msg);
+                alert(rs.msg);
                 $(window).attr("location","login.html");
 
             }
@@ -59,8 +59,9 @@ $(function(){
 })
 //获取信息
 function  GetCartInfo(){
-    $.get(xsite+"/cart/findallcarts.do",function(data){
-        alert(data.msg);
+    $.get(xsite+"/cart/findallcarts.do",function(rs){
+        alert(rs.msg);
+        UpdataPageInfo(rs);
     })
 }
 //更新商品数量

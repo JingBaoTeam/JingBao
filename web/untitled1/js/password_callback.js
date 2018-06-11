@@ -28,9 +28,12 @@ $(function(){
     })
 
 //获取问题
+    
     $("#username").blur(function(){
         if(!Isname){ return checkname();}
         $.post(xsite+"/user/getuserquestion.do", ,function(rs){
+        var User= {
+        }
             console.log(rs);
             $("#question").html(rs.msg);
         })
