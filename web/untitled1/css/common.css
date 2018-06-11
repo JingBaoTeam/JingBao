@@ -1,0 +1,44 @@
+@charset "utf-8";
+body{ position:relative; min-width:1200px;background:#ffffff;}
+.wrapper-box{ width: 1200px; margin: 0 auto;overflow:hidden}
+.content-box{width: 1100px;margin: 0 auto;overflow: hidden;}
+
+
+/*头部导航*/
+.header-outBox{ background-color:#f3f3f3; height:36px; border-bottom:1px solid #dcdcdc; color:#666666; font-size:13px}
+.header-inbox{width:1100px; margin:0 auto;}
+.header-inbox p{ float:left;  line-height:36px; color:#666666;}
+.header-inbox a{ float:left; line-height:36px; color:#666666;}
+.header-inbox .login{ color:#41b6e7}
+.header-inbox img{ float:left; margin-top:11px}
+.myAction{ float:right;}
+.myAction li{ float:right}
+.myAction li img{ margin-left:15px; margin-right:5px}
+
+
+
+
+
+
+
+/*服务*/
+#product-service{ height: 98px; margin:20px auto;}
+#product-service .item{ width: 25%;}
+#product-service .item_icon{ width: 51px; height: 56px; margin: 22px 17px 0 25px; background-image: url(../images/common/css_sprites.png);}
+#product-service .item_icon.icon1{ background-position: -590px -246px;}
+#product-service .item_icon.icon2{ background-position: -590px -170px;}
+#product-service .item_icon.icon3{ background-position: -590px -94px;}
+#product-service .item_icon.icon4{ background-position: -590px -16px;}
+#product-service .text_tit{ margin-top: 26px; font-size: 16px; font-weight: bold; color: #1f1f1f; line-height: 26px;}
+#product-service .text_info{ font-size: 12px; color: #424242;}
+
+/*底部*/
+.footerBox{border-top:1px solid #dcdcdc;}
+.footer{background-color:#41b6e7 ;padding-top:30px;padding-bottom:50px;  overflow:hidden}
+.footerInside{ float:left; padding-left:20px; padding-right:80px;}
+.footerInside h1{ color:#fff; font-size:16px; line-height:30px}
+.footerInside a{ color:#fff; font-size:12px; display:block; padding:4px 0}
+#currentfooterInside{ float:left; padding-left:80px; padding-right:46px;}
+.Copyright-bgcolor{background-color:#f3f3f3;}
+.Copyright{color:#4c4c4c; text-align:center;padding:20px 0px; }
+
