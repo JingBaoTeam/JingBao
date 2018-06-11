@@ -35,8 +35,11 @@ public class ActionCartServiceImpl implements ActionCartService {
 		if(userId==null || productId==null || count==null) {
 			return SverResponse.createByErrorMessage("参数错误！");
 		}
+		//查看用户的购物车中是否存在该商品
 		ActionCart actionCart = aCartDao.findCartByUserAndProductId(userId, productId);
 		if(actionCart==null) {
+			//不存在则，新增
+
 			ActionCart cart = new ActionCart();
 			cart.setUserId(userId);
 			cart.setProductId(productId);
@@ -45,6 +48,7 @@ public class ActionCartServiceImpl implements ActionCartService {
 			cart.setUpdated(new Date());
 			aCartDao.insertCart(cart);
 		}else {
+			//如果已经存在，则数量增加
 			int cartCount= actionCart.getQuantity()+count;
 			actionCart.setQuantity(cartCount);
 			aCartDao.updateCartById(actionCart);
@@ -69,13 +73,16 @@ public class ActionCartServiceImpl implements ActionCartService {
 	private ActionCartVo createCartVo(List<ActionCart> carts) {
 		ActionCartVo cartVo = new ActionCartVo();
 		List<ActionCartListVo> list = Lists.newArrayList();
+		//购物车商品总价格
 		BigDecimal cartTotalPrice = new BigDecimal("0");
 		if(CollectionUtils.isNotEmpty(carts)) {
 			for(ActionCart cart:carts) {
+				//转换对象
 				ActionCartListVo listVo = new ActionCartListVo();
 				listVo.setId(cart.getId());
 				listVo.setUserId(cart.getUserId());;
 				listVo.setProductId(cart.getProductId());
+				//封装商品信息
 				ActionProduct product =aProductDao.findProductById(listVo.getProductId());
 				if(product!=null) {
 					listVo.setName(product.getName());
@@ -83,6 +90,7 @@ public class ActionCartServiceImpl implements ActionCartService {
 					listVo.setPrice(product.getPrice());
 					listVo.setStock(product.getStock());
 					listVo.setIconUrl(product.getIconUrl());
+					//判断库存
 					int buyCount=0;
 					if(product.getStock()>=cart.getQuantity()) {
 						buyCount = cart.getQuantity();
@@ -94,9 +102,12 @@ public class ActionCartServiceImpl implements ActionCartService {
 						aCartDao.updateCartById(updateCart);
 					}
 					listVo.setQuantity(buyCount);
+					//计算购物车中某商品的总价格
 					BigDecimal totalPrice = CalcUtil.mul(listVo.getPrice().doubleValue(), listVo.getQuantity().doubleValue());
 					listVo.setTotalPrice(totalPrice);
 				}
+				
+				//累计购物车中商品的总价格
 				cartTotalPrice = CalcUtil.add(cartTotalPrice.doubleValue(), listVo.getTotalPrice().doubleValue());
 				list.add(listVo);
 			}
