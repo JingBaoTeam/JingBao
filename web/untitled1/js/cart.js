@@ -1,10 +1,10 @@
 /**
  * Created by Administrator on 2018/6/8.
  */
-var xsite="http://117.78.47.168:8080//mall";
+var xsite="http://www.ireson.cn/amall/";
 $(function(){
 //     获取购物车信息
-    //GetCartInfo();
+    GetCartInfo();
 
 
 //清空购物车
