@@ -7,11 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
-
 import cn.techaction.common.SverResponse;
 import cn.techaction.pojo.ActionProduct;
 import cn.techaction.service.ActionProductService;
@@ -43,11 +39,7 @@ public class ActionProductController {
 	public SverResponse<ActionProduct> getProductDetail(Integer productId){
 		return productService.findProductDetailForPortal(productId);
 	}
-@RequestMapping("/findhotproducts.do")
-    @ResponseBody
-	public SverResponse<List<ActionProduct>> findHotProducts(Integer num){
-		return productService.findHotProducts(num);
-	}
+
 	
 	
 	@RequestMapping("/findfloors.do")
@@ -57,16 +49,11 @@ public class ActionProductController {
 	}
 	
 
-	@RequestMapping(value="/getdetail.do")
-	@ResponseBody
-	public SverResponse<ActionProduct> lookProducts(String productId) {
-		return productService.looksProducts(productId);
 
-	}
 	@RequestMapping(value="/findhotproducts.do")
 	@ResponseBody
-	public SverResponse<List<ActionProduct>> hotProducts(String num) {
-		return productService.gethotProducts(num);
+	public SverResponse<List<ActionProduct>> findHotProducts(String num) {
+		return productService.findHotProducts(num);
 
 	}
 	

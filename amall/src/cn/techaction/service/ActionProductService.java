@@ -99,7 +99,7 @@ public interface ActionProductService {
 	 * @param num    查询商品的数量
 	 * @return
 	 */
-	public SverResponse<List<ActionProduct>> findHotProducts(Integer num);
+	public SverResponse<List<ActionProduct>> findHotProducts(String num);
 	/**
 	 * 门户：获取首页所有楼层数据
 	 * @return

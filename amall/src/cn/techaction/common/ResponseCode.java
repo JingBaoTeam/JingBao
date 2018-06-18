@@ -4,7 +4,6 @@ public enum ResponseCode {
 	
 	SUCCESS(0,"SUCCESS"),
 	ERROR(1,"ERROR");
-	
 	private final int code;
 	private final String desc;
 	
