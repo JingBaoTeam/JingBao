@@ -41,7 +41,7 @@ public class ActionProductController {
 	public SverResponse<ActionProduct> getProductDetail(Integer productId){
 		return productService.findProductDetailForPortal(productId);
 	}
-@RequestMapping("/findhotproducts.do")
+	@RequestMapping("/findhotproducts.do")
     @ResponseBody
 	public SverResponse<List<ActionProduct>> findHotProducts(Integer num){
 		return productService.findHotProducts(num);
