@@ -33,7 +33,10 @@ public class ActionProductBackController {
 	@Autowired
 	private ActionProductService productService;
 
+<<<<<<< HEAD
 	/*
+=======
+>>>>>>> 73cc0dba33a6db2d8b90fd9b40996deba7203e77
 	@RequestMapping(value="/saveproduct.do",method=RequestMethod.POST)
     @ResponseBody
 	public SverResponse<String> saveProduct(HttpSession session,ActionProduct product){
@@ -195,7 +198,11 @@ public class ActionProductBackController {
 			return SverResponse.createByErrorMessage("无操作权限！");
 		}
 	}
+<<<<<<< HEAD
 	*/
+=======
+	
+>>>>>>> 73cc0dba33a6db2d8b90fd9b40996deba7203e77
 }
 
 

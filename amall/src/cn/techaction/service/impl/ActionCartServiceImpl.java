@@ -38,7 +38,12 @@ public class ActionCartServiceImpl implements ActionCartService {
 		//²é¿´ÓÃ»§µÄ¹ºÎï³µÖÐÊÇ·ñ´æÔÚ¸ÃÉÌÆ·
 		ActionCart actionCart = aCartDao.findCartByUserAndProductId(userId, productId);
 		if(actionCart==null) {
+<<<<<<< HEAD
 			//²»´æÔÚÔò£¬ÐÂÔö
+=======
+			//ä¸å­˜åœ¨åˆ™ï¼Œæ–°å¢ž
+
+>>>>>>> 73cc0dba33a6db2d8b90fd9b40996deba7203e77
 			ActionCart cart = new ActionCart();
 			cart.setUserId(userId);
 			cart.setProductId(productId);
@@ -60,9 +65,13 @@ public class ActionCartServiceImpl implements ActionCartService {
 		if(userId==null) {
 			return SverResponse.createByErrorMessage("²ÎÊý´íÎó£¡");
 		}
+<<<<<<< HEAD
 		//²éÕÒ¸ÃÓÃ»§¹ºÎï³µÖÐµÄÉÌÆ·
 		List<ActionCart> list = aCartDao.findCartByUser(userId);
 		//·â×°ActionCartVo¶ÔÏó
+=======
+		List<ActionCart> list = aCartDao.findCartByUser(userId);
+>>>>>>> 73cc0dba33a6db2d8b90fd9b40996deba7203e77
 		ActionCartVo cartVo = createCartVo(list);
 		return SverResponse.createRespBySuccess(cartVo);
 	}
@@ -97,7 +106,10 @@ public class ActionCartServiceImpl implements ActionCartService {
 						buyCount = cart.getQuantity();
 					}else {
 						buyCount = product.getStock();
+<<<<<<< HEAD
 						//¸üÐÂ¹ºÎï³µÖÐÉÌÆ·ÊýÁ¿
+=======
+>>>>>>> 73cc0dba33a6db2d8b90fd9b40996deba7203e77
 						ActionCart updateCart = new ActionCart();
 						updateCart.setId(cart.getId());
 						updateCart.setQuantity(buyCount);

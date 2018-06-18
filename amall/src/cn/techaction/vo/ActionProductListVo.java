@@ -2,8 +2,13 @@ package cn.techaction.vo;
 
 import java.math.BigDecimal;
 /**
+<<<<<<< HEAD
  * 用于在后台商品列表中展示的Vo对象
  * @author Administrator
+=======
+ * 鐢ㄤ簬鍦ㄥ悗鍙板晢鍝佸垪琛ㄤ腑灞曠ず鐨刅o瀵硅薄
+ * @author ireson
+>>>>>>> 73cc0dba33a6db2d8b90fd9b40996deba7203e77
  *
  */
 public class ActionProductListVo {

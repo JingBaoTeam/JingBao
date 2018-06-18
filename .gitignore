@@ -29,3 +29,5 @@ amall/.settings/
 #myingnore
 Servers/
 DataSource.properties
+amall/build/classes/applicationContext.xml
+amall/src/DataSource.properties

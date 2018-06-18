@@ -5,10 +5,17 @@ import java.util.List;
 import cn.techaction.pojo.ActionProduct;
 
 public class ActionProductEvenFloorVo {
+<<<<<<< HEAD
 	private List<ActionProduct> mb;		//ÖĞ¼äÏÂ·½
 	private ActionProduct mt;			//ÖĞ¼äÉÏ·½
 	private List<ActionProduct> rt;		//ÓÒ-ÉÏ
 	private List<ActionProduct> rb;		//ÓÒ-ÏÂ
+=======
+	private List<ActionProduct> mb;		//ä¸­é—´ä¸‹æ–¹
+	private ActionProduct mt;			//ä¸­é—´ä¸Šæ–¹
+	private List<ActionProduct> rt;		//å³-ä¸Š
+	private List<ActionProduct> rb;		//å³-ä¸‹
+>>>>>>> 73cc0dba33a6db2d8b90fd9b40996deba7203e77
 	
 	public List<ActionProduct> getMb() {
 		return mb;

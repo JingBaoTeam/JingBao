@@ -6,6 +6,7 @@ import java.util.Date;
 public class ActionProduct {
 	private Integer id;
 	private String name;
+<<<<<<< HEAD
 	private Integer productId; //²úÆ·ÀàÐÍID
 	private Integer partsId;	//Åä¼þÀàÐÍID
 	private String iconUrl;		//ÉÌÆ·Ö÷Í¼
@@ -16,6 +17,18 @@ public class ActionProduct {
 	private Integer stock;		//¿â´æ
 	private Integer status;		//ÉÌÆ·×´Ì¬
 	private Integer hot;		//ÊÇ·ñÈÈÏú
+=======
+	private Integer productId; //äº§å“ç±»åž‹ID
+	private Integer partsId;	//é…ä»¶ç±»åž‹ID
+	private String iconUrl;		//å•†å“ä¸»å›¾
+	private String subImages;	//å•†å“ç»„å›¾ åœ°å€
+	private String detail ;		//å•†å“è¯¦æƒ…
+	private String specParam;	//è§„æ ¼å‚æ•°
+	private BigDecimal price;	//å•†å“ä»·æ ¼
+	private Integer stock;		//åº“å­˜
+	private Integer status;		//å•†å“çŠ¶æ€
+	private Integer hot;		//æ˜¯å¦çƒ­é”€
+>>>>>>> 73cc0dba33a6db2d8b90fd9b40996deba7203e77
 	private Date created;
 	private Date updated;
 	

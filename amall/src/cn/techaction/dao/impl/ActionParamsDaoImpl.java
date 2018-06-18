@@ -13,6 +13,11 @@ import org.springframework.stereotype.Repository;
 import cn.techaction.dao.ActionParamsDao;
 import cn.techaction.pojo.ActionParam;
 
+<<<<<<< HEAD
+=======
+//@author ireson
+
+>>>>>>> 73cc0dba33a6db2d8b90fd9b40996deba7203e77
 @Repository
 public class ActionParamsDaoImpl implements ActionParamsDao {
 
