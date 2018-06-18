@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2018/6/10.
  */
-var xsite="http://www.ireson.cn/amall";
+//var xsite=baseUrl;
 
 var Isname=false;
 
@@ -31,53 +31,97 @@ $(function(){
     
     $("#username").blur(function(){
         if(!Isname){ return checkname();}
-        $.post(xsite+"/user/getuserquestion.do", ,function(rs){
         var User= {
+            account:$("#username").val()
         }
-            console.log(rs);
-            $("#question").html(rs.msg);
+        $.ajax({
+            url:baseUrl+"user/getuserquestion.do",
+            type:"post",
+            data:User,
+            xhrFields: {withCredentials: true},
+            crossDomain: true,
+            success:function(rs){$("#question").html(rs.msg);}
         })
+        //$.post(xsite+"/user/getuserquestion.do", User,function(rs){
+        //    console.log(rs);
+        //    $("#question").html(rs.msg);
+        //})
     })
 
 
-
-    //新密码
+    var token;//口令
+    //验证答案
     $("#answer").blur(function(){
-        if(!Isanswer){return}
-
+        if(!Isanswer){  return checkanswer();  }
+        //答案数据
         AnswerForm={
             account:$("#username").val(),
-            question:$("#question").val(),
-            asw:$("#password").val()
+            question:$("#question").html(),
+            asw:$("#answer").val()
         }
-
-        $.post(xsite+"/user/checkuserasw.do" ,AnswerForm,function(rs){
-            if(rs.status==0){
-
-                $("#newps").css("display","inherit");
-            }
-            else{
-                console.log(rs.status);
-                $("#Erroranswer").html(rs.msg);
-                $("#Erroranswer").css("display","inline");
+        console.log(AnswerForm);
+        $.ajax({
+            url:baseUrl+"/user/checkuserasw.do",
+            type:"post",
+            data:AnswerForm,
+            xhrFields: {withCredentials: true},
+            crossDomain: true,
+            success:function(rs) {
+                if (rs.status == 0) {
+                    $("#newps").css("display", "inherit");
+                    token=rs.msg;
+                }
+                else {
+                    console.log(rs);
+                    $("#Erroranswer").html(rs.msg);
+                    $("#Erroranswer").css("display", "inline");
+                }
             }
         })
+        //$.post(xsite+"" ,AnswerForm,function(rs){
+        //    if(rs.status==0){
+        //        $("#newps").css("display","inherit");
+        //    }
+        //    else{
+        //        console.log(rs);
+        //        $("#Erroranswer").html(rs.msg);
+        //        $("#Erroranswer").css("display","inline");
+        //    }
+        //})
     })
 
-
-    NewKeyForm={
-        account:$("#username").val(),
-        newpwd:$("#newps").val(),
-        token:"1111"
-    }
 
 //    修改密码
 $("#submit").click(function(){
-    $.post(xsite+"/user/resetpassword.do",NewKeyForm,function(rs){
-        if(rs.status==0){
-            $(window).attr("location","login.html");
+    //判断密码
+    if(!Ispassword){return checkpassword();}
+    //密码数据
+
+    $.ajax({
+        url:baseUrl+"user/resetpassword.do",
+        data:{
+            account:$("#username").val(),
+            newpwd:$("#newps").val(),
+            token:token
+        },
+        type:"post",
+        xhrFields: {withCredentials: true},
+        crossDomain: true,
+        success:function(rs) {
+            if (rs.status == 0) {
+                console.log(rs);
+                alert(rs.msg);
+                $(window).attr("location", "login.html");
+            }
         }
     })
+    //$.post(xsite+"/",NewKeyForm,function(rs){
+    //    if(rs.status==0){
+    //        console.log(rs);
+    //        alert(rs.msg);
+    //        $(window).attr("location","login.html");
+    //    }
+    //})
 })
 
 
