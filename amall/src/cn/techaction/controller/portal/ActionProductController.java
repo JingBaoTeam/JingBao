@@ -30,7 +30,6 @@ public class ActionProductController {
 
 	}
 	
-	//@author ireson
 	/**
 	 * 根据商品编号，获取商品详情
 	 * @param session
