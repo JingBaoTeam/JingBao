@@ -1,6 +1,7 @@
 package cn.techaction.service.impl;
 
 import java.util.Date;
+import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,11 +91,15 @@ public class ActionUserServiceImpl implements ActionUserService {
 
 	@Override
 	public SverResponse<String> doCheckAws(String account, String question, String asw) {
-		if(userDao.checkUserAnswer(account, question, asw) == 0) {
-			return SverResponse.createByErrorMessage("问题回答错误");
-		}else {
-			return SverResponse.createRespBySuccessMessage("问题回答正确");
+		int rs =  userDao.checkUserAnswer(account, question, asw);
+		if(rs > 0) {
+			//答案正确,生成Token
+			String token = UUID.randomUUID().toString();
+			//放入缓存
+			TokenCache.setCacheData(TokenCache.PREFIX+account, token);
+			return SverResponse.createRespBySuccessMessage(token);
 		}
+		return SverResponse.createByErrorMessage("问题答案错误！");
 	}
 
 	@Override

@@ -1,29 +1,45 @@
 /**
  * Created by Administrator on 2018/6/8.
  */
-var xsite="http://www.ireson.cn/amall/";
+    //http://117.78.47.168:8080/mall/
+//var xsite=baseUrl;
 $(function(){
 //     获取购物车信息
-    GetCartInfo();
+   GetCartInfo();
 
 
 //清空购物车
     $("#clear").click(function(){
-        $.get(xsite+"/cart/clearcarts.do",function(rs){
-            if(rs.status==0){
-                //console.log(data.status);
-                $("#cart-empty").css("display","block");
-                $("#cart-container").css("display","none");
-            }
-            else{
-                alert(rs.msg);
-                $(window).attr("location","login.html");
-
+        $.ajax({
+            url:baseUrl+"cart/clearcarts.do",
+            xhrFields: {withCredentials: true},
+            crossDomain: true,
+            success:function(rs){
+                    if(rs.status==0){
+                        //console.log(data.status);
+                        $("#cart-empty").css("display","block");
+                        $("#cart-container").css("display","none");
+                    }
+                    else{
+                        alert(rs.msg);
+                        $(window).attr("location","login.html");
+                    }
             }
         })
+        //$.get(xsite+"/",function(rs){
+        //    if(rs.status==0){
+        //        //console.log(data.status);
+        //        $("#cart-empty").css("display","block");
+        //        $("#cart-container").css("display","none");
+        //    }
+        //    else{
+        //        alert(rs.msg);
+        //        $(window).attr("location","login.html");
+        //    }
+        //})
     })
     //减少数量
-    $("#minus-btn").live("click",function(){
+    $(".minus-btn").live("click",function(){
         var quantity= $(this).next().val();
         quantity=parseInt(quantity)-1;
         if(quantity<=0){
@@ -35,7 +51,7 @@ $(function(){
        UpdataQuantity(productId,quantity);
     })
     //增加数量
-    $("#plus-btn").live("click",function(){
+    $(".plus-btn").live("click",function(){
         var quantity=$(this).prev().val();
         quantity=parseInt(quantity)+1;
         $(".l").val(quantity);
@@ -45,35 +61,62 @@ $(function(){
 //删除商品
     $(".delete").live("click",function(){
         var productId = $(this).attr("data-product-id");
-        $.get(xsite+"/cart/delcarts.do",productId,function(rs){
-            UpdataPageInfo(rs);
+        console.log(productId);
+        $.ajax({
+            url:baseUrl+"cart/delcarts.do",
+            data:{productId:productId},
+            xhrFields: {withCredentials: true},
+            crossDomain: true,
+            success:function(rs){
+                UpdataPageInfo(rs);
+            }
         })
+        //$.get(xsite+"/",,function(rs){
+        //    UpdataPageInfo(rs);
+        //})
     })
     $("#submit").click(function(){
         $(window).attr("location","order_confirm.html");
     })
 
-
+    $(".item").click(function(){
+        $(".item").removeClass("active");
+        $(this).addClass("active");
+    });
 
 
 })
 //获取信息
 function  GetCartInfo(){
-    $.get(xsite+"/cart/findallcarts.do",function(rs){
-        alert(rs.msg);
-        UpdataPageInfo(rs);
+    $.ajax({
+        url:baseUrl+"cart/findallcarts.do",
+        xhrFields: {withCredentials: true},
+        crossDomain: true,
+        success:function(rs){
+            console.log(rs);
+           // alert(rs.msg);
+            UpdataPageInfo(rs);
+        }
     })
+    //$.get(xsite+"/",function(rs){
+    //    alert(rs.msg);
+    //    UpdataPageInfo(rs);
+    //})
 }
 //更新商品数量
 function UpdataQuantity(productId,quantity){
-    Form={
-        productId:productId,
-        count:quantity
-    };
-
-    $.get(xsite+"/cart/updatecarts.do",Form,function(data){
-        UpdataPageInfo(data);
+    $.ajax({
+        url:baseUrl+"cart/updatecarts.do",
+        data:{'count':quantity,'productId':productId},
+        xhrFields:{withCredentials:true},
+        crossDomain:true,
+        success:function(rs){
+            UpdataPageInfo(rs);
+        }
     })
+    //$.get(xsite+"/",Form,function(data){
+    //    UpdataPageInfo(data);
+    //})
 }
 //更新网页商品
 function UpdataPageInfo(rs) {
