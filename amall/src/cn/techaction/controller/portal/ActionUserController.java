@@ -34,9 +34,12 @@ public class ActionUserController {
 			ActionUser user = response.getData();
 			session.setAttribute(ConstUtil.CUR_USER, user);
 			return response;
+		}else {
+			System.out.println("error");
+			return null;
 		}
-		return null;
 	}
+	
 	/**
 	 * 用户注册
 	 * @param user
@@ -49,6 +52,7 @@ public class ActionUserController {
 		user.setAccount(account);
 		user.setAsw(asw);
 		user.setEmail(email);
+		user.setQuestion(question);
 		user.setPassword(password);
 		user.setPhone(phone);
 		return userService.doRegister(user);

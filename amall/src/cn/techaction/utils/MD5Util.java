@@ -8,9 +8,9 @@ public class MD5Util {
 			"0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"
 	};
 	/**
-	 * è½¬æ¢byteä¸º16è¿›åˆ¶
-	 * @param b è¦è½¬æ¢çš„byte
-	 * @return 16è¿›åˆ¶å¯¹åº”çš„å­—ç¬¦
+	 * ×ª»»byteÎª16½øÖÆ
+	 * @param b Òª×ª»»µÄbyte
+	 * @return 16½øÖÆ¶ÔÓ¦µÄ×Ö·û
 	 */
 	private static String byteToHexString(byte b) {
 		int n=b;
@@ -22,7 +22,7 @@ public class MD5Util {
 		return hexDigits[d1]+hexDigits[d2];
 	}
 	/**
-	 * è½¬æ¢å­—èŠ‚æ•°ç»„ä¸º16è¿›åˆ¶å­—ç¬¦ä¸²
+	 * ×ª»»×Ö½ÚÊı×éÎª16½øÖÆ×Ö·û´®
 	 * @param bytes
 	 * @return
 	 */
@@ -34,17 +34,17 @@ public class MD5Util {
 		return sb.toString();
 	}
 	/**
-	 * MD5åŠ å¯†
-	 * @param source è¦åŠ å¯†çš„å­—ç¬¦ä¸²
-	 * @param encoding æŒ‡å®šç¼–ç ç±»å‹
-	 * @param upperCase æ˜¯å¦è½¬ä¸ºå¤§å†™å­—ç¬¦ä¸²
+	 * MD5¼ÓÃÜ
+	 * @param source Òª¼ÓÃÜµÄ×Ö·û´®
+	 * @param encoding Ö¸¶¨±àÂëÀàĞÍ
+	 * @param upperCase ÊÇ·ñ×ªÎª´óĞ´×Ö·û´®
 	 * @return
 	 */
 	public static String MD5Encode(String source,String encoding,boolean upperCase) {
 		String result = null;
 		try {
 			result = source;
-			//è·å¾—MD5æ‘˜è¦å¯¹è±¡
+			//»ñµÃMD5ÕªÒª¶ÔÏó
 			MessageDigest mesageDigest = MessageDigest.getInstance("MD5");
 			mesageDigest.update(result.getBytes(encoding));
 			result = byteArrayToHexString(mesageDigest.digest());
@@ -53,6 +53,8 @@ public class MD5Util {
 		}
 		return upperCase?result.toUpperCase():result;
 	}
+	
+	
 	
 }
 

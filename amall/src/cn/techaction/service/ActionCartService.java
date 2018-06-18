@@ -6,28 +6,28 @@ import cn.techaction.vo.ActionCartVo;
 public interface ActionCartService {
 
 	/**
-	 * ä¿å­˜å•†å“ä¿¡æ¯åˆ°è´­ç‰©è½¦ä¸­
-	 * @param userId		ç”¨æˆ·ç¼–å·
-	 * @param productId		å•†å“ç¼–å·
-	 * @param count			å•†å“çš„æ•°é‡
+	 * ±£´æÉÌÆ·ĞÅÏ¢µ½¹ºÎï³µÖĞ
+	 * @param userId		ÓÃ»§±àºÅ
+	 * @param productId		ÉÌÆ·±àºÅ
+	 * @param count			ÉÌÆ·µÄÊıÁ¿
 	 * @return
 	 */
 	public SverResponse<String> saveOrUpdate(Integer userId,Integer productId,Integer count);
 	/**
-	 * æŸ¥è¯¢ç”¨æˆ·è´­ç‰©è½¦ä¸­å•†å“ä¿¡æ¯
-	 * @param userId		ç”¨æˆ·ç¼–å·
+	 * ²éÑ¯ÓÃ»§¹ºÎï³µÖĞÉÌÆ·ĞÅÏ¢
+	 * @param userId		ÓÃ»§±àºÅ
 	 * @return
 	 */
 	public SverResponse<ActionCartVo> findAllCarts(Integer userId);
 	/**
-	 * åˆ é™¤è´­ç‰©è½¦ä¸­çš„å•†å“ä¿¡æ¯
-	 * @param productId		å•†å“ç¼–å·
+	 * É¾³ı¹ºÎï³µÖĞµÄÉÌÆ·ĞÅÏ¢
+	 * @param productId		ÉÌÆ·±àºÅ
 	 * @return
 	 */
 	public SverResponse<ActionCartVo> deleteCart(Integer userId,Integer productId);
 	
 	/**
-	 * æ›´æ–°è´­ç‰©è½¦ä¸­å•†å“çš„æ¢³ç†
+	 * ¸üĞÂ¹ºÎï³µÖĞÉÌÆ·µÄÊáÀí
 	 * @param userId
 	 * @param productId
 	 * @param count
@@ -35,14 +35,14 @@ public interface ActionCartService {
 	 */
 	public SverResponse<ActionCartVo> updateCart(Integer userId,Integer productId,Integer count); 
 	/**
-	 * æ¸…ç©ºè´­ç‰©è½¦
+	 * Çå¿Õ¹ºÎï³µ
 	 * @param userId
 	 * @return
 	 */
 	public SverResponse<String> clearCart(Integer userId);
 	
 	/**
-	 * è·å–ç™»é™†ç”¨æˆ·è´­ç‰©è½¦ä¸­å•†å“çš„ä¸ªæ•°
+	 * »ñÈ¡µÇÂ½ÓÃ»§¹ºÎï³µÖĞÉÌÆ·µÄ¸öÊı
 	 * @param userId
 	 * @return
 	 */

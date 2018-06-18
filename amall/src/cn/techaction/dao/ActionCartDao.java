@@ -7,53 +7,53 @@ import cn.techaction.pojo.ActionCart;
 public interface ActionCartDao {
 	
 	/**
-	 * æ ¹æ®ç”¨æˆ·idå’Œäº§å“idæŸ¥è¯¢è´­ç‰©
-	 * @param userId			ç”¨æˆ·ç¼–å·
-	 * @param productId			å•†å“ç¼–å·
+	 * ¸ù¾İÓÃ»§idºÍ²úÆ·id²éÑ¯¹ºÎï
+	 * @param userId			ÓÃ»§±àºÅ
+	 * @param productId			ÉÌÆ·±àºÅ
 	 * @return
 	 */
 	public ActionCart findCartByUserAndProductId(Integer userId,Integer productId);
 	/**
-	 * ä¿å­˜è´­ç‰©è½¦
-	 * @param cart				è´­ç‰©è½¦å¯¹è±¡
+	 * ±£´æ¹ºÎï³µ
+	 * @param cart				¹ºÎï³µ¶ÔÏó
 	 * @return
 	 */
 	public int insertCart(ActionCart cart);
 	/**
-	 * æ›´æ–°è´­ç‰©è½¦ä¸­å•†å“çš„æ•°é‡
-	 * @param cart				è´­ç‰©è½¦å¯¹è±¡
+	 * ¸üĞÂ¹ºÎï³µÖĞÉÌÆ·µÄÊıÁ¿
+	 * @param cart				¹ºÎï³µ¶ÔÏó
 	 * @return
 	 */
 	public int updateCartById(ActionCart cart);
 	/**
-	 * æ›´æ–°è´­ç‰©è½¦ä¸­å•†å“çš„æ•°é‡
-	 * @param cart				è´­ç‰©è½¦å¯¹è±¡
+	 * ¸üĞÂ¹ºÎï³µÖĞÉÌÆ·µÄÊıÁ¿
+	 * @param cart				¹ºÎï³µ¶ÔÏó
 	 * @return
 	 */
 	public int updateCartByUserIdAndProductId(ActionCart cart);
 	/**
-	 * åˆ é™¤è´­ç‰©è½¦ä¸­çš„å•†å“
-	 * @param productId			å•†å“ç¼–å·
+	 * É¾³ı¹ºÎï³µÖĞµÄÉÌÆ·
+	 * @param productId			ÉÌÆ·±àºÅ
 	 * @return
 	 */
 	public int deleteCart(Integer userId,Integer productId);
 	
 	/**
-	 * æŸ¥æ‰¾ç”¨æˆ·è´­ç‰©è½¦ä¸­çš„å•†å“ä¿¡æ¯
-	 * @param userId			ç”¨æˆ·ç¼–å·
+	 * ²éÕÒÓÃ»§¹ºÎï³µÖĞµÄÉÌÆ·ĞÅÏ¢
+	 * @param userId			ÓÃ»§±àºÅ
 	 * @return
 	 */
 	public List<ActionCart> findCartByUser(Integer userId);
 	
 	/**
-	 * åˆ é™¤æŸä¸ªç”¨æˆ·è´­ç‰©è½¦ä¸­æ‰€æœ‰çš„å•†å“
+	 * É¾³ıÄ³¸öÓÃ»§¹ºÎï³µÖĞËùÓĞµÄÉÌÆ·
 	 * @param userId
-	 * @return					ç”¨æˆ·ç¼–å·
+	 * @return					ÓÃ»§±àºÅ
 	 */
 	public int deleteCartByUserId(Integer userId);
 	
 	/**
-	 * è·å–å½“å‰ç”¨æˆ·è´­ç‰©è½¦ä¸­å•†å“çš„æ•°é‡
+	 * »ñÈ¡µ±Ç°ÓÃ»§¹ºÎï³µÖĞÉÌÆ·µÄÊıÁ¿
 	 * @param userId
 	 * @return
 	 */

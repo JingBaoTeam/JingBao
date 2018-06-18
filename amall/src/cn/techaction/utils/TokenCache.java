@@ -11,10 +11,13 @@ public class TokenCache {
 
 	public static final String PREFIX="action_";
 	
-	//åˆå§‹åŒ–ç¼“å­˜å¯¹è±¡
+	//³õÊ¼»¯»º´æ¶ÔÏó
 	private static LoadingCache<String, String> mCache = CacheBuilder.newBuilder()
+			//ÉèÖÃcacheµÄ³õÊ¼´óĞ¡Îª1000
 			.initialCapacity(1000)
+			//ÉèÖÃ×î´ó»º´æÊıÁ¿
 			.maximumSize(10000)
+			//ÉèÖÃĞ´»º´æºó¹ıÆÚÊ±¼ä
 			.expireAfterAccess(30, TimeUnit.MINUTES)
 			.build(new CacheLoader<String, String>(){
 				@Override
@@ -25,7 +28,7 @@ public class TokenCache {
 			});
 		
 	/**
-	 * å°†æ•°æ®è¾“å…¥å­˜å…¥ç¼“å­˜
+	 * ½«Êı¾İÊäÈë´æÈë»º´æ
 	 * @param key
 	 * @param value
 	 */
@@ -34,7 +37,7 @@ public class TokenCache {
 	}
 	
 	/**
-	 * ä»ç¼“å­˜ä¸­è¯»å–æ•°æ®
+	 * ´Ó»º´æÖĞ¶ÁÈ¡Êı¾İ
 	 * @param key
 	 * @return
 	 */
@@ -48,6 +51,6 @@ public class TokenCache {
 		} catch (ExecutionException e) {
 			e.printStackTrace();
 		}
-		return value;
+		return null;
 	}
 }

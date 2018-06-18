@@ -7,15 +7,15 @@ public class ActionCartListVo {
 	
 	private Integer id;
 	private Integer userId;
-	private Integer productId;   //å•†å“ç¼–å·
-	private String name;		//å•†å“åç§°
-	private Integer quantity;	//å•†å“æ•°é‡
+	private Integer productId;   //ÉÌÆ·±àºÅ
+	private String name;		//ÉÌÆ·Ãû³Æ
+	private Integer quantity;	//ÉÌÆ·ÊıÁ¿
 	
-	private BigDecimal price;	//å•†å“ä»·æ ¼
-	private Integer status;		//å•†å“çŠ¶æ€
-	private BigDecimal totalPrice; //å•†å“æ€»ä»·
+	private BigDecimal price;	//ÉÌÆ·¼Û¸ñ
+	private Integer status;		//ÉÌÆ·×´Ì¬
+	private BigDecimal totalPrice; //ÉÌÆ·×Ü¼Û
 	private Integer stock;
-	private String iconUrl;		//å•†å“ä¸»å›¾ç‰‡
+	private String iconUrl;		//ÉÌÆ·Ö÷Í¼Æ¬
 	
 	
 	public String getIconUrl() {

@@ -1,39 +1,39 @@
 package cn.techaction.utils;
 
 public class ConstUtil {
-	//å½“å‰ç”¨æˆ·æ ‡è¯†
+	//µ±Ç°ÓÃ»§±êÊ¶
 	public static final String CUR_USER="curUser";
 	
-	//ç”¨æˆ·å¯ä»¥éªŒè¯çš„ä¿¡æ¯
+	//ÓÃ»§¿ÉÒÔÑéÖ¤µÄĞÅÏ¢
 	public static final String TYPE_ACCOUNT="account";
 	public static final String TYPE_EMAIL="email";
 	public static final String TYPE_PHONE="phone";
-	//å›¾ç‰‡æ–‡ä»¶ä¸Šä¼ è·¯å¾„
+	//Í¼Æ¬ÎÄ¼şÉÏ´«Â·¾¶
 	public static final String UPLOAD_IMAGES_PATH="/upload/";
 	
 	/**
-	 * ç”¨æˆ·è§’è‰²å¸¸é‡
+	 * ÓÃ»§½ÇÉ«³£Á¿
 	 */
 	public static class Role{
 		public static final int ROLE_CUSTOMER=1;
 		public static final int ROLE_ADMIN=2;
 	}
-	//å•†å“çŠ¶æ€å¸¸é‡
+	//ÉÌÆ·×´Ì¬³£Á¿
 	public static class ProductStatus{
-		public static final int STATUS_NEW=1;        //æ–°å¢ï¼Œå¾…å”®
-		public static final int STATUS_ON_SALE=2;	//ä¸Šæ¶ï¼Œåœ¨å”®
-		public static final int STATUS_OFF_SALE=3;   //ä¸‹æ¶ï¼Œ
+		public static final int STATUS_NEW=1;        //ĞÂÔö£¬´ıÊÛ
+		public static final int STATUS_ON_SALE=2;	//ÉÏ¼Ü£¬ÔÚÊÛ
+		public static final int STATUS_OFF_SALE=3;   //ÏÂ¼Ü£¬
 		public static String getStatusDesc(int code) {
-			String desc = "æœªçŸ¥çŠ¶æ€";
+			String desc = "Î´Öª×´Ì¬";
 			switch (code) {
 			case STATUS_NEW:
-				desc="å¾…å”®";
+				desc="´ıÊÛ";
 				break;
 			case STATUS_ON_SALE:
-				desc="åœ¨å”®";
+				desc="ÔÚÊÛ";
 				break;
 			case STATUS_OFF_SALE:
-				desc="ä¸‹æ¶";
+				desc="ÏÂ¼Ü";
 				break;
 			default:
 				break;
@@ -41,35 +41,35 @@ public class ConstUtil {
 			return desc;
 		}
 	}
-	//è®¢å•çŠ¶æ€
+	//¶©µ¥×´Ì¬
 	public static class OrderStatus{
 		
-		public static final int ORDER_NO_PAY=1;		//æœªä»˜æ¬¾
-		public static final int ORDER_PAID=2;		//å·²ç»ä»˜æ¬¾
-		public static final int ORDER_SHIPPED=3;	//å·²ç»å‘è´§
-		public static final int ORDER_SUCCESS=4;	//è®¢å•å®Œæˆ
-		public static final int ORDER_CLOESD = 5;	//è®¢å•å…³é—­
-		public static final int ORDER_CANCELED=6;  //è®¢å•å–æ¶ˆ
+		public static final int ORDER_NO_PAY=1;		//Î´¸¶¿î
+		public static final int ORDER_PAID=2;		//ÒÑ¾­¸¶¿î
+		public static final int ORDER_SHIPPED=3;	//ÒÑ¾­·¢»õ
+		public static final int ORDER_SUCCESS=4;	//¶©µ¥Íê³É
+		public static final int ORDER_CLOESD = 5;	//¶©µ¥¹Ø±Õ
+		public static final int ORDER_CANCELED=6;  //¶©µ¥È¡Ïû
 		public static String getStatusDesc(int code) {
-			String desc="æœªçŸ¥çŠ¶æ€";
+			String desc="Î´Öª×´Ì¬";
 			switch (code) {
 			case ORDER_CANCELED:
-				desc="è®¢å•å–æ¶ˆ";
+				desc="¶©µ¥È¡Ïû";
 				break;
 			case ORDER_NO_PAY:
-				desc="æœªä»˜æ¬¾";
+				desc="Î´¸¶¿î";
 				break;
 			case ORDER_PAID:
-				desc="å·²ä»˜æ¬¾";
+				desc="ÒÑ¸¶¿î";
 				break;
 			case ORDER_SHIPPED:
-				desc="å·²å‘è´§";
+				desc="ÒÑ·¢»õ";
 				break;
 			case ORDER_SUCCESS:
-				desc="äº¤æ˜“å®Œæˆ";
+				desc="½»Ò×Íê³É";
 				break;
 			case ORDER_CLOESD:
-				desc="äº¤æ˜“å…³é—­";
+				desc="½»Ò×¹Ø±Õ";
 				break;
 			default:
 				break;
@@ -77,39 +77,39 @@ public class ConstUtil {
 			return desc;
 		}
 	}
-	//ä»˜æ¬¾æ–¹å¼
+	//¸¶¿î·½Ê½
 	public static class PaymentType{
-		public static final int PAY_ON_LINE=1;    //åœ¨çº¿æ”¯ä»˜
-		public static final int PAY_CASH_ON_DELIVERY=2;//è´§åˆ°ä»˜æ¬¾
+		public static final int PAY_ON_LINE=1;    //ÔÚÏßÖ§¸¶
+		public static final int PAY_CASH_ON_DELIVERY=2;//»õµ½¸¶¿î
 		
 		public static String getTypeDesc(int type) {
 			if(type==PAY_ON_LINE) {
-				return "åœ¨çº¿æ”¯ä»˜";
+				return "ÔÚÏßÖ§¸¶";
 			}else if(type==PAY_CASH_ON_DELIVERY) {
-				return "åˆ°ä»˜";
+				return "µ½¸¶";
 			}else {
-				return "æœªçŸ¥æ–¹å¼";
+				return "Î´Öª·½Ê½";
 			}
 		}
 	}
 
 	public static class HotStatus{
-		public static final int HOT_STATUS=1;//çƒ­é”€
-		public static final int NORMAL_STATUS=2;	//éçƒ­é”€
+		public static final int HOT_STATUS=1;//ÈÈÏú
+		public static final int NORMAL_STATUS=2;	//·ÇÈÈÏú
 		public static String getHotDesc(int hot) {
 			if(hot==HOT_STATUS) {
-				return "çƒ­é”€";
+				return "ÈÈÏú";
 			}else {
-				return "ä¸€èˆ¬";
+				return "Ò»°ã";
 			}
 		}
 	}
 	
 	public static class ProductType{
-		public static final int TYPE_HNTJX=10023;	//æ··å‡åœŸæœºæ¢°
-		public static final int TYPE_JZQZJJX=10024;	//å»ºç­‘èµ·é‡æœºæœºæ¢°
-		public static final int TYPE_GCQZJJX=10025;	//å·¥ç¨‹èµ·é‡æœºæœºæ¢°
-		public static final int TYPE_LMJX=10026;	//è·¯é¢æœºæ¢°
+		public static final int TYPE_HNTJX=10023;	//»ìÄıÍÁ»úĞµ
+		public static final int TYPE_JZQZJJX=10024;	//½¨ÖşÆğÖØ»ú»úĞµ
+		public static final int TYPE_GCQZJJX=10025;	//¹¤³ÌÆğÖØ»ú»úĞµ
+		public static final int TYPE_LMJX=10026;	//Â·Ãæ»úĞµ
 	}
 
 }

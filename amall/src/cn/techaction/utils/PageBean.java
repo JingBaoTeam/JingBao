@@ -3,37 +3,30 @@ package cn.techaction.utils;
 import java.util.List;
 
 public class PageBean<T> {
-	
-	//å¿…é¡»çš„å·²çŸ¥æ•°æ®
-	private int pageNum;   	//å½“å‰é¡µ
-	private int pageSize;	//æ¯é¡µæ˜¾ç¤ºçš„æ•°æ®æ¡æ•°
-	private int totalRecord;	//æ€»çš„è®°å½•æ•°
-	
-	
-	private int totalPage;	//æ€»é¡µæ•°
-	private int startIndex; //å¼€å§‹ç´¢å¼•
-	
-	private List<T> data;	//æ¯é¡µè¦å±•ç¤ºçš„æ•°æ®
-	
-	//è¦æ˜¾ç¤ºçš„åˆ†é¡µæ•°é‡
-	private int prePage ;
-	private int nextPage;
+	//±ØĞëµÄÒÑÖªÊı¾İ
+	private int pageNum;   		//µ±Ç°Ò³
+	private int pageSize;		//Ã¿Ò³ÏÔÊ¾µÄÊı¾İÌõÊı
+	private int totalRecord;	//×ÜµÄ¼ÇÂ¼Êı
+	private int totalPage;		//×ÜÒ³Êı
+	private int startIndex; 	//¿ªÊ¼Ë÷Òı
+	private List<T> data;		//Ã¿Ò³ÒªÕ¹Ê¾µÄÊı¾İ
+	private int prePage ;		//ÉÏÒ»Ò³
+	private int nextPage;		//ÏÂÒ»Ò³
 	
 	public PageBean(int pageNum, int pageSize, int totalRecord) {
 		super();
 		this.pageNum = pageNum;
 		this.pageSize = pageSize;
 		this.totalRecord = totalRecord;
-		
-		//æ€»é¡µæ•°
+		//×ÜÒ³Êı
 		if(totalRecord%pageSize==0) {
 			this.totalPage = totalRecord/pageSize;
 		}else {
 			this.totalPage = totalRecord/pageSize+1;
 		}
-		//å¼€å§‹ç´¢å¼•
+		//¿ªÊ¼Ë÷Òı
 		this.startIndex = (pageNum-1)*pageSize;
-		//ä¸Šä¸€é¡µ
+		//ÉÏÒ»Ò³
 		this.prePage=this.pageNum-1;
 		this.nextPage=this.pageNum+1;
 		if(this.prePage<=0) {
@@ -94,14 +87,13 @@ public class PageBean<T> {
 		this.data = data;
 	}
 
-	
-	
 	public int getPrePage() {
 		return prePage;
 	}
 	public void setPrePage(int prePage) {
 		this.prePage = prePage;
 	}
+
 	public int getNextPage() {
 		return nextPage;
 	}

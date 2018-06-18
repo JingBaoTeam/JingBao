@@ -4,22 +4,39 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ColumnListHandler;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.StringUtils;
 
 import cn.techaction.dao.ActionProductDao;
 import cn.techaction.pojo.ActionProduct;
 
 @Repository
-public abstract class ActionProductDaoImpl implements ActionProductDao {
-	@Autowired
+public class ActioinProductDaoImpl implements ActionProductDao {
+	@Resource
 	private QueryRunner queryRunner;
-	private String alias;
+
+	private String alias = "id,name,product_id as productId,parts_id as partsId,icon_url as iconUrl"
+			+ ",sub_images as subImages,detail,spec_param as specParam,price,stock,status,is_hot as hot"
+			+ ",created,updated ";
+
+	@Override
+	public ActionProduct findProductById(Integer id) {
+		String sql = "select " + this.alias + " from action_products where id = ? ";
+		try {
+			return queryRunner.query(sql, new BeanHandler<ActionProduct>(ActionProduct.class), id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
 	public int insertProduct(ActionProduct product) {
 		String sql = "insert into action_products(name,product_id ,parts_id ,icon_url,sub_images ,detail,spec_param,price,stock,status,is_hot,created,updated ) values "
 				+ "(?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -27,7 +44,7 @@ public abstract class ActionProductDaoImpl implements ActionProductDao {
 				product.getSubImages(),product.getDetail(),
 				product.getSpecParam(),product.getPrice(),
 				product.getStock(),product.getStatus(),
-				product.getId(),product.getCreated(),product.getUpdated()
+				product.getHot(),product.getCreated(),product.getUpdated()
 				};
 		try {
 			return queryRunner.update(sql, params);
@@ -36,6 +53,18 @@ public abstract class ActionProductDaoImpl implements ActionProductDao {
 			return 0;
 		}
 	}
+
+	@Override
+	public int deleteProductById(Integer id) {
+		String sql = "delete from action_products where id = ? ";
+		try {
+			return queryRunner.update(sql, id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
 	@Override
 	public int updateProduct(ActionProduct product){
 		String sql = "update action_products set updated=? ";
@@ -75,7 +104,6 @@ public abstract class ActionProductDaoImpl implements ActionProductDao {
 		}
 		if(product.getHot()!=null) {
 			sql +=",is_hot = ?";
-	
 			params.add(product.getHot());
 		}
 		
@@ -89,93 +117,8 @@ public abstract class ActionProductDaoImpl implements ActionProductDao {
 			return 0;
 		}
 	}
-	@Override
-	public int getTotalCount(Integer productId, Integer partsId) {
-		// TODO Auto-generated method stub
-		String sql = "select count(id) as num from action_products where 1=1";
-		List<Object> params = new ArrayList<>();
-		if (productId != null) {
-			sql += " and procuct_id = ?";
-			params.add(productId);
-		}
-		if (partsId != null) {
-			sql += "and parts_id = ?";
-			params.add(partsId);
-		}
-		try {
-			List<Long> rs = queryRunner.query(sql, new ColumnListHandler<Long>("num"), params.toArray());
-			return rs.get(0).intValue();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return 0;
-	}
 
-	@Override
-	public List<ActionProduct> findProductsByTypeId(Integer productId, Integer partsId, Integer startIndex,
-			Integer pageSize) {
-		// TODO Auto-generated method stub
-		String sql = "select id,name,product_id as productId,parts_id as partsId,icon_url as iconUrl"
-				+ ",sub_images as subImages ,detail,spec_param as specParam,price,stock,status,is_Hot as isHot"
-				+ ",created,updated from action_products where 1=1";
-		List<Object> params = new ArrayList<>();
-		if (productId != null) {
-			sql += " and procuct_id = ?";
-			params.add(productId);
-		}
-		if (partsId != null) {
-			sql += "and parts_id = ?";
-			params.add(partsId);
-		}
-		sql+="limit ? , ?";
-		params.add(startIndex);
-		params.add(pageSize);
-		try {
-			return queryRunner.query(sql, new BeanListHandler<ActionProduct>(ActionProduct.class),params.toArray());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	public ActionProduct findProductById(String id) {
-		String sql = "select " + this.alias + " from action_products where id = ? ";
-		try {
-			return queryRunner.query(sql, new BeanHandler<ActionProduct>(ActionProduct.class), id);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-	public List<ActionProduct> findhotsProducts(Integer num) {
-		String sql = "select " + this.alias + " from action_products where is_hot=1 ";
-		sql+=" order by updated,id desc ";
-		if(num !=null) {
-			sql+=" limit 0 , ?";
-		}
-		try {
-			if(num!=null) {
-				return queryRunner.query(sql, new BeanListHandler<ActionProduct>(ActionProduct.class),num);
-			}else {
-				return queryRunner.query(sql, new BeanListHandler<ActionProduct>(ActionProduct.class));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-	@Override
-	public int deleteProductById(Integer id) {
-		String sql = "delete from action_products where id = ? ";
-		try {
-			return queryRunner.update(sql, id);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return 0;
-		}
-	}
+	//读取总记录数
 	@Override
 	public Integer getTotalCount(ActionProduct conditon) {
 		String sql = "select count(id) as num from action_products where 1=1 ";
@@ -207,6 +150,7 @@ public abstract class ActionProductDaoImpl implements ActionProductDao {
 			return 0;
 		}
 	}
+	//读取分页数据
 	@Override
 	public List<ActionProduct> findProducts(ActionProduct conditon,int offset, int pageSize) {
 		String sql = "select " + this.alias + " from action_products where 1=1 ";
@@ -241,6 +185,7 @@ public abstract class ActionProductDaoImpl implements ActionProductDao {
 			return null;
 		}
 	}
+
 	@Override
 	public List<ActionProduct> findProductsNoPage(ActionProduct conditon) {
 		String sql = "select " + this.alias + " from action_products where 1=1 ";
@@ -273,6 +218,26 @@ public abstract class ActionProductDaoImpl implements ActionProductDao {
 			return null;
 		}
 	}
+
+	@Override
+	public List<ActionProduct> findHotProducts(Integer num) {
+		String sql = "select " + this.alias + " from action_products where is_hot=1 ";
+		sql+=" order by updated,id desc ";
+		if(num !=null) {
+			sql+=" limit 0 , ?";
+		}
+		try {
+			if(num!=null) {
+				return queryRunner.query(sql, new BeanListHandler<ActionProduct>(ActionProduct.class),num);
+			}else {
+				return queryRunner.query(sql, new BeanListHandler<ActionProduct>(ActionProduct.class));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	@Override
 	public List<ActionProduct> findProductsByProductCategory(Integer categoryId) {
 		String sql = "select " + this.alias + " from action_products where product_id= ? order by updated desc ";

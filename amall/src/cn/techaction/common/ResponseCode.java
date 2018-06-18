@@ -1,9 +1,9 @@
 package cn.techaction.common;
 
 public enum ResponseCode {
-	
 	SUCCESS(0,"SUCCESS"),
-	ERROR(1,"ERROR");
+	ERROR(1,"ERROR"),
+	UNLOGIN(2,"UNLOGIN");
 	
 	private final int code;
 	private final String desc;
@@ -16,8 +16,8 @@ public enum ResponseCode {
 	public int getCode() {
 		return code;
 	}
-	
 	public String getDesc() {
 		return desc;
 	}
+
 }

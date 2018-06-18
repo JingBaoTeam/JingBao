@@ -1,4 +1,4 @@
-package cn.techaction.controller.backend;
+package cn.techaction.controller.backstage;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.techaction.common.SverResponse;
-import cn.techaction.pojo.ActionUser;
-import cn.techaction.service.ActionUserService;
+import cn.techaction.pojo.User;
+import cn.techaction.service.UserService;
 import cn.techaction.utils.ConstUtil;
 
 @Controller
@@ -18,27 +18,31 @@ import cn.techaction.utils.ConstUtil;
 public class ActionUserBackController {
 
 	@Autowired
-	private ActionUserService userService;
+	private UserService userService;
 
 	/**
-	 * ç®¡ç†å‘˜ç™»å½•
+	 * Ç°¶ËµÇÂ½·½·¨
+	 * 
 	 * @param account
+	 *            ÕËºÅ
 	 * @param password
+	 *            ÃÜÂë
 	 * @param session
+	 *            »á»°
 	 * @return
 	 */
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	@ResponseBody
-	public SverResponse<ActionUser> doLogin(String account, String password, HttpSession session) {
-		SverResponse<ActionUser> response = userService.doLogin(account, password);
+	public SverResponse<User> doLogin(String account, String password, HttpSession session) {
+		SverResponse<User> response = userService.doLogin(account, password);
 		if (response.isSuccess()) {
-			ActionUser user = response.getData();
+			User user = response.getData();
 			if (user.getRole() == ConstUtil.Role.ROLE_ADMIN) {
-				//å°†ç”¨æˆ·ä¿¡æ¯ä¿å­˜åˆ°Session
+				// ËµÃ÷µÇÂ¼µÄÊÇ¹ÜÀíÔ±
 				session.setAttribute(ConstUtil.CUR_USER, user);
 				return response;
 			} else {
-				return SverResponse.createByErrorMessage("");
+				return SverResponse.createByErrorMessage("²»ÊÇ¹ÜÀíÔ±,ÎŞ·¨µÇÂ¼");
 			}
 		}
 		return response;
