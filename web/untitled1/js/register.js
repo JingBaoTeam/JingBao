@@ -1,4 +1,4 @@
-var xsite="http://www.ireson.cn/amall/";//接口网址
+//var xsite=baseUrl;//接口网址
 
 var Isusername=false;
 var Ispassword=false;
@@ -16,13 +16,25 @@ $(document).ready(function(){
             $("#usernameError").css("display","inline");
             return;
         }
-        $.post(xsite+"user/do_check_info.do", {info: $("#username").val(), type:"account"},// $("#username").name  验证用户名
-            function (rs) {
-                //console.log(rs);
+        $.ajax({
+            url:baseUrl+"user/do_check_info.do",
+            type:"post",
+            data:{info: $("#username").val(), type:"account"},
+            xhrFields:{withCredentials:true},
+            crossDomain:true,
+            success:function(rs){
                 $("#usernameError").text(rs.msg);
                 $("#usernameError").css("display","inline");
                 if(rs.status==0){Isusername=true;}
-            });
+            }
+        })
+        //$.post(xsite+"user/do_check_info.do", {info: $("#username").val(), type:"account"},// $("#username").name  验证用户名
+        //    function (rs) {
+        //        //console.log(rs);
+        //        $("#usernameError").text(rs.msg);
+        //        $("#usernameError").css("display","inline");
+        //        if(rs.status==0){Isusername=true;}
+        //    });
     })
 })
 //密码验证
@@ -72,14 +84,28 @@ $(document).ready(function(){
             return;
         }
         else{$("#phoneError").css("display","none");}
-        $.post(xsite + "user/do_check_info.do", {info: $("#phone").val(), type:"phone"},// $("#username").name  验证用户名
-            function (rs) {
-                console.log($("#phone").val());
-                //console.log(rs);
-                $("#phoneError").html(rs.msg);
-                $("#phoneError").css("display","inline");
-                if(rs.status==0){Isphone=true;}
-            });
+        $.ajax({
+            url:baseUrl+"user/do_check_info.do",
+            type:"post",
+            data:{info: $("#phone").val(), type:"phone"},
+            xhrFields:{withCredentials:true},
+            crossDomain:true,
+            success:function (rs) {
+                    console.log($("#phone").val());
+                    //console.log(rs);
+                    $("#phoneError").html(rs.msg);
+                    $("#phoneError").css("display","inline");
+                    if(rs.status==0){Isphone=true;}
+                }
+        })
+        //$.post(xsite + "user/do_check_info.do", {info: $("#phone").val(), type:"phone"},// $("#username").name  验证用户名
+        //    function (rs) {
+        //        console.log($("#phone").val());
+        //        //console.log(rs);
+        //        $("#phoneError").html(rs.msg);
+        //        $("#phoneError").css("display","inline");
+        //        if(rs.status==0){Isphone=true;}
+        //    });
     })
 })
 //验证邮箱
@@ -93,12 +119,24 @@ $(document).ready(function(){
             return;
         }
         else{$("#emailerorr").css("display","none"); }
-        $.post(xsite+"user/do_check_info.do",{info:$("#email").val(),type:"email"},
-            function(rs){
+        $.ajax({
+            url:baseUrl+"user/do_check_info.do",
+            data:{info:$("#email").val(),type:"email"},
+            type:"post",
+            xhrFields:{withCredentials:true},
+            crossDomain:true,
+            success:    function(rs){
                     $("#emailerorr").css("display","inline");
                     $("#emailerorr").html(rs.msg);
-                if(rs.status==0){Isemail=true;}
-            })
+                    if(rs.status==0){Isemail=true;}
+                }
+        })
+        //$.post(xsite+"user/do_check_info.do",{info:$("#email").val(),type:"email"},
+        //    function(rs){
+        //        $("#emailerorr").css("display","inline");
+        //        $("#emailerorr").html(rs.msg);
+        //        if(rs.status==0){Isemail=true;}
+        //    })
     })
 })
 //密码提示
@@ -174,16 +212,33 @@ $("#bt").ready(function(){
             asw:$("#answer").val(),
         };
         console.log(formData);
-            $.post(xsite+"user/do_register.do",formData,function(rs){
-                if(rs.status==0){
+        $.ajax({
+            url:baseUrl+"user/do_register.do",
+            type:"post",
+            data:formData,
+            xhrFields:{withCredentials:true},
+            crossDomain:true,
+            success:function(rs) {
+                if (rs.status == 0) {
                     console.log(rs);
                     alert(rs.msg);
-                    $(window).attr("location","login.html");
+                    $(window).attr("location", "login.html");
                 }
-                else{
+                else {
                     alert(rs.msg);
                 }
-            })
+            }
+        })
+            //$.post(xsite+"",formData,function(rs){
+            //    if(rs.status==0){
+            //        console.log(rs);
+            //        alert(rs.msg);
+            //        $(window).attr("location","login.html");
+            //    }
+            //    else{
+            //        alert(rs.msg);
+            //    }
+            //})
     })
 
 })

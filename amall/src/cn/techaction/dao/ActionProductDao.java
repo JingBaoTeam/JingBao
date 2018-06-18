@@ -26,7 +26,7 @@ public interface ActionProductDao {
 	public List<ActionProduct> findProductsByTypeId(Integer productId, Integer partsId, Integer startIndex,
 			Integer pageSize);
 
-	//@author ireson
+
 	/**
 	 * 根据商品编号查找商品信息
 	 * @param id		商品编号

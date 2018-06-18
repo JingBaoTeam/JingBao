@@ -36,7 +36,6 @@ public class ActionProductServiceImpl implements ActionProductService {
 	
 	@Autowired
 	private ActionProductDao productDao;
-	
 	@Autowired
 	private ActionParamsDao aParamsDao;
 
@@ -271,6 +270,20 @@ public class ActionProductServiceImpl implements ActionProductService {
 
 
 	@Override
+<<<<<<< HEAD
+	public SverResponse<ActionProduct> looksProducts(String productId) {
+		ActionProduct product = productDao.findProductById(productId);
+		return SverResponse.createRespBySuccess(product);
+	}
+	public SverResponse<List<ActionProduct>> gethotProducts(String num) {
+		List<ActionProduct> products = productDao.findhotsProducts(num);
+		if(products.size()<5) {
+			return SverResponse.createByErrorMessage("尚未设置热销商品！");
+		}
+		return SverResponse.createRespBySuccess(products);
+	}
+
+=======
 	public SverResponse<ActionProductFloorVo> findFloorProducts() {
 		ActionProductFloorVo vo = new ActionProductFloorVo();
 		//1楼数据
@@ -338,6 +351,7 @@ public class ActionProductServiceImpl implements ActionProductService {
 		}	
 		return SverResponse.createRespBySuccess(voList);
 	}
+>>>>>>> 02b79fdac7580d805e02845886cfd010aea358a6
 }
 
 
