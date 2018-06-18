@@ -39,6 +39,7 @@ public class ActionUserController {
 			return null;
 		}
 	}
+	
 	/**
 	 * 用户注册
 	 * @param user
@@ -51,6 +52,7 @@ public class ActionUserController {
 		user.setAccount(account);
 		user.setAsw(asw);
 		user.setEmail(email);
+		user.setQuestion(question);
 		user.setPassword(password);
 		user.setPhone(phone);
 		return userService.doRegister(user);
