@@ -1,0 +1,155 @@
+@charset "utf-8";
+
+
+/*头部Logo和搜索开始*/
+.actionSearchBox{ overflow:hidden; padding-top:18px}
+.logo{ background-image:url(../images/common/logo.png); background-repeat:no-repeat; display:block; width:199px; height:60px; float:left; margin-right:132px}
+.inputBox{
+	float: left;
+	height: 58px;
+	padding-top: 2px;
+	width:540px;
+	line-height: 58px;
+}
+.inputBox input{
+    line-height: 35px;
+}
+.inputBox input{ width:438px; height:35px; border:#41b6e7 2px solid; font-size:14px; color:#333333; padding-left:4px;outline:none; float:left}
+.searchBtn{ width:84px; background-color:#41b6e7; height:35px;  font-size:16px;  display:block; line-height:35px; float:left; text-align:center; color:#333333;}
+.hotword{ float:none; line-height:19px; clear:both; color:#999999; width:524px; padding-top:4px}
+.hotword a{ color:#999999; border-right:1px #c2c1c1 solid}
+.telephoneNumber{ margin-left:150px; float:left}
+/*头部Logo和搜索结束*/
+
+
+/*头部主导航 开始*/
+#head-main-nav{display: block; margin-top: 26px;  border-bottom: #41b6e7 3px solid; }
+/*.leftNavline{ height:1px; background-image:url(../images/common/); width:176px; margin-left:12px}*/
+.leftNavArrow{ display:block; width:8px; height:12px; background-image:url(../images/common/nav_left.png); position:absolute; right:4px ;top:8px}
+.theFooterLast a{ font-size: 12px;}
+.ad-img{  margin-top: 20px; }
+.fore02 img{  width: 100%; }
+
+#mallNav{width:100%;  position:relative; z-index:0;}
+.mallNav_main{display: inline;float: left;font-size: 16px;height:42px;margin-left:220px; position:relative; z-index:6;}
+#mallNav .nall_hid{ width:962px; overflow:hidden; float:right;}
+#mallNav .nall_hid li {float: left;height:42px;line-height:42px;text-align: center; no-repeat top left; display:inline;}
+#mallNav .nall_hid a{color: #FFFFFF;height:42px;line-height:42px;text-align: center;padding:0 32px;font-size:16px;width:auto; display:inline-block;color: #595959; }
+#mallNav .nall_hid a:hover,#mallNav .nall_hid a.curr {position: relative;text-decoration: none;padding:0 32px;font-size:16px;z-index: 10; margin-left:0px;color: #85a52a;}
+/*头部主导航 结束*/
+
+
+#content {margin-left: auto; margin-right: auto;}
+.topScreen{height:420px; padding-bottom:10px;}
+
+/*首页三级分类*/
+.mallLeft{ width:200px; float:left; margin-top:-45px; height:450px; background:#ffffff; color:#848484;z-index:15; }
+.category-container{ position:relative; top:0; background:#ffffff; z-index:20;width:200px; height:100%;}
+.category-container .category-title{ height: 45px;line-height: 45px;position: relative;width: 200px;z-index:30;  background-color: #41b6e7;font-size: 16px;  color: #404040;text-indent: 20px;font-weight: normal;}
+.category-container .menu {border-bottom: 1px solid #E6E6E6;position: relative;width: 200px;background:#0DA8E9;height: 420px;}
+.category-container .menu ul{height: 420px;overflow: hidden;}
+
+.category-container .iten{ width: 180px;zoom:1; *margin-top:-3px;background: #0DA8E9;height:32px;line-height:29px;font-size: 14px;padding-left:20px;color:white;}
+.category-container .itentwo{background-color: #F1F1F1;}
+.category-container .item_hd {cursor: default;font-family: 'Lucida Grande','微软雅黑'; height:28px; line-height:25px; overflow:hidden; padding: 3px 10px 0; position: relative;white-space: nowrap;color:white;font-size: 14px;font-weight: normal;width:80%;border-bottom: 1px dotted white; }
+.category-container .item_hd a{float:left;color: white}
+
+.subCategory{left: 200px;position: absolute;top: -11px;z-index: 16;display:none;}
+.subCategory .subView {border:1px solid #E6E6E6;background:#ffffff;box-shadow:5px 5px 5px rgba(0, 0, 0, 0.2), 1px -3px 5px rgba(0, 0, 0, 0.2);height: auto;margin: 10px 10px 10px 0;z-index: 17;}
+
+.category-container .selected {background-color: #E9ECE5;color:#55565A;}
+.category-container .selected .item_hd a,.category-container .selected .item_col a,.category-container .selected .item_col a:hover{color: #55565A;}
+.subCategory a:hover{ color:#cd0001;}
+
+.nextMenu{ width:396px; height:412px; background-color:#fff; position:absolute; left:0px; z-index:10;  padding-top:8px;background:rgba(256,256,256,0.9);filter:alpha(opacity=90);  }
+.nextMenu .menu01{ color:#333333; width:92px; padding-left:5px; text-align:right; float:left;line-height:14px; display:block}
+.nextMenu .menu01 strong{ font-weight:bold; font-size:14px}
+.menu02Box{ float:left; width:294px}
+.nextMenuBox{ overflow:hidden; margin:10px 0; margin-bottom:7px}
+.nextMenu .menu02{ white-space:nowrap;color:#333333; width:auto; padding-left:5px; text-align:center; float:left; border-left:1px solid #d0d0d1;line-height:14px; padding:0 10px; margin-bottom:8px}
+.menuGreyline{ height:1px; background-color:#dadbde; margin-left:96px}
+
+
+/*首页幻灯开始*/
+.tsMain {float: right;height: 420px;overflow: hidden;width:1000px;position: relative;}
+.tsSlide, .tsSlide_list li {height: 420px;overflow: hidden;position: relative;width:1000px;*z-index:9;zoom:1;z-index:1}
+.tsSlide_list li img{height: 420px;width:1000px;}
+
+.slideBox .btn {position:absolute; height:28px; right: 50px; bottom:20px; z-index:5;}
+.slideBox .btn li{background:url(../images/common/circle2.png) no-repeat;background-size: 100% 100%;color: #FFFFFF;cursor: pointer;display: inline-block;font-family: "Microsoft YaHei",SimHei;font-size: 10px;height: 20px;line-height: 20px;margin-right: 4px;text-align: center;width: 20px;}
+.slideBox .btn li.on{color:white;background:url(../images/common/circle1.png) no-repeat;background-size: 100% 100%;}
+
+/*首页幻灯结束*/
+
+/*热销开始*/
+.lmf_t{ background:#ffffff; font-size:20px;padding-left: 10px;font-weight:normal;}
+.lmf_t .hot{color:#ff4a00;font-size:18px;font-weight:bold;}
+
+.lmf_main{ border-top:none; width:1200px; overflow:hidden;}
+.prodea{width:1200px; padding-top:10px; overflow:hidden;}
+
+.bBox1{overflow:hidden;}
+.bBox1 li{width: 19.8%;height:300px; float:left;display:inline;background:#FCFCFC;border-top: 1px solid #e9e7e7; border-left: 1px solid #e9e7e7; border-bottom: 1px solid #e9e7e7; position: relative;}
+.bBox1 li .image{display: block; width: 100%; height: 240px; overflow:hidden;}
+.bBox1 .right_border{border-right: 1px solid #e9e7e7;}
+.flow-ovnt{ height:18px; line-height:18px; width:235px; overflow:hidden;padding-top: 5px;text-indent: 20px}
+.flow-ovnt-name{ font-size:18px;height:30px;line-height: 30px;}
+.flow-ovnt-name a{ font-size:18px;color:#8C8C8C;}
+.flow-ovnt-jianjie{ font-size:16px;height:18px;line-height: 18px;}
+.flow-ovnt-jianjie a{ font-size:16px;color:#8C8C8C;}
+.flow-ovnt-price{ font-size: 16px;  height: 30px;  line-height: 37px}
+.flow-ovnt-price .price{ font-size:18px;color:#ff4a01;font-weight:bold}
+.flow-ovnt-price del{ font-size:18px;color:#8C8C8C;}
+.bBox1 li .hot-icon{position:absolute;top:0px;right:0px;}
+.nopadding{ padding-top:0;}
+.yuan,.price{color:#c00; font-weight:normal; font-family:"微软雅黑";font-size:14px;}
+.price{font-weight:700;}
+/*热销结束*/
+
+
+/*楼层导航开始*/
+ .floorNavBox{overflow:hidden; border-bottom:2px solid #41b6e7;margin-top: 20px;}
+ .floorNumber{ background-image:url(../images/common/floor_bg.jpg); background-repeat:no-repeat; width:57px; height:35px; font-size:22px; color:#fff; line-height:35px; float:left}
+ .floorNavBox h1{ font-size:20px; color:#333333; float:left; padding-left:10px; line-height:35px}
+ .floorNavBox a{ display:block; float:right; padding:0 16px; font-size:16px; line-height:30px; color:#333333; padding-top:5px;cursor: pointer;}
+ .floorNavBox .currentA{ color:#666666}
+ 
+ /*楼层导航结束*/
+
+/*所有楼层左侧*/
+.floorLeftBanner{float:left; border:#ededed 1px solid;border-top:none;width:324px; height:470px;}
+.floorLeftBanner img{width:324px; height:470px;}
+ 
+/*一、三楼开始*/
+/*中间*/
+.floormiddleBox01{ float:left; border-bottom:#ededed 1px solid; border-right:#ededed 1px solid}
+.floormiddleBox01 .fore01{width:436px; height:156px; display:block; border-bottom:#ededed 1px solid;}
+.floormiddleBox01 .fore01 img{width: 430px;height: 150px;margin-left: 6px;}
+.floormiddleBox01 .fore02{ width:436px; height:313px; display:block;}
+.floormiddleBox01 .fore02 img{width: 430px;height: 313px;margin-left: 6px;}
+
+/*右侧*/
+.floorrightBox01{ float:left;  width:436px}
+.floorrightBox01 .fore03{ width:217px; height:156px ; background-image:url(../images/common/pure_floor_bg.png); display:block; float:left;border-bottom:#ededed 1px solid; border-right:#ededed 1px solid}
+.floorrightBox01 .fore03 img{width: 216px;height: 156px;margin-left: 0px;}
+/*一、三楼结束*/
+
+/*二、四楼楼开始*/
+
+.floormiddleBox02{float:left; width:436px}
+.floormiddleBox02 .fore01{width:217px; height:236px; display:block; float:left;border-bottom:#ededed 1px solid; border-right:#ededed 1px solid}
+.floormiddleBox02 .fore01 img{width: 210px;height: 236px;margin-left: 6px;}
+.floormiddleBox02 .fore02{width:436px; height:233px; display:block; float:left;border-bottom:#ededed 1px solid;background: url('../images/common/fore02_bg2.png');}
+.floormiddleBox02 .fore02 img{width:435px; height:233px;}
+
+.floorrightBox02{ float:left;  width:438px}
+.floorrightBox02 .fore03{ width:218px; height:116px; display:block; float:left;border-bottom:#ededed 1px solid;border-right:#ededed 1px solid; }
+.floorrightBox02 .fore03 img{ width:212px; height:116px;margin-left: 6px;}
+.floorrightBox02 .fore01{width:218px; height:236px; display:block; float:left;border-bottom:#ededed 1px solid; border-right:#ededed 1px solid}
+.floorrightBox02 .fore01 img{width: 210px;height: 236px;margin-left: 6px;}
+/*二、四楼结束*/
+
+/*楼层文字*/
+.product-info-container{position: absolute;font-size: 18px;top:15px;left: 23px;line-height: 20px;}
+.product-info-container .product-name{font-size: 15px;color: #191919;}
+.product-info-container .product-price{font-size: 15px;color: #ff4a00;}

@@ -50,8 +50,8 @@ public class ActionUserServiceImpl implements ActionUserService {
 	@Override
 	public SverResponse<String> doRegister(ActionUser user) {
 		int rs = userDao.checkUserByAccount(user.getAccount());
-		if(rs==0) {
-			return SverResponse.createByErrorMessage("用户不存在！");
+		if(rs!=0) {
+			return SverResponse.createByErrorMessage("用户已存在！");
 		}
 		user.setRole(ConstUtil.Role.ROLE_CUSTOMER);
 		user.setPassword(MD5Util.MD5Encode(user.getPassword(), "UTF-8", false));
@@ -69,14 +69,14 @@ public class ActionUserServiceImpl implements ActionUserService {
 	public SverResponse<String> doCheckInfo(String info, String type) {
 		if(type.equals("account")) {
 			int rs = userDao.checkUserByAccount(info);
-			if(rs == 0) return SverResponse.createRespBySuccess("信息验证成功");
+			if(rs == 0) return SverResponse.createRespBySuccessMessage("信息验证成功");
 			else return SverResponse.createByErrorMessage("用户名已经存在");
 		}else if(type.equals("email")) {
 			int rs = userDao.checkUserByEmail(info);
-			if(rs == 0) return SverResponse.createRespBySuccess("信息验证成功");
+			if(rs == 0) return SverResponse.createRespBySuccessMessage("信息验证成功");
 			else return SverResponse.createByErrorMessage("Email已经存在");
 		}else if(type.equals("phone")) {
-			if(userDao.checkUserByPhone(info) == 0) return SverResponse.createRespBySuccess("信息验证成功");
+			if(userDao.checkUserByPhone(info) == 0) return SverResponse.createRespBySuccessMessage("信息验证成功");
 			else return SverResponse.createByErrorMessage("电话号码已经存在！");
 		}else return SverResponse.createByErrorMessage("信息验证类别错误！");
 	}
@@ -85,7 +85,7 @@ public class ActionUserServiceImpl implements ActionUserService {
 	public SverResponse<String> getUserQue(String account) {
 		String mess = userDao.findUserQuestion(account);
 		if(mess == null) return SverResponse.createByErrorMessage("未设置密码提示问题！");
-		else return SverResponse.createRespBySuccess(mess);
+		else return SverResponse.createRespBySuccessMessage(mess);
 	}
 
 	@Override
@@ -93,7 +93,7 @@ public class ActionUserServiceImpl implements ActionUserService {
 		if(userDao.checkUserAnswer(account, question, asw) == 0) {
 			return SverResponse.createByErrorMessage("问题回答错误");
 		}else {
-			return SverResponse.createRespBySuccess("问题回答正确");
+			return SverResponse.createRespBySuccessMessage("问题回答正确");
 		}
 	}
 
@@ -114,7 +114,7 @@ public class ActionUserServiceImpl implements ActionUserService {
 			String pwd = MD5Util.MD5Encode(password, "UTF-8", false);
 			int rs = userDao.updatePasswordByAccount(account,pwd);
 			if(rs>0) {
-				return SverResponse.createRespBySuccess("密码修改成功！");
+				return SverResponse.createRespBySuccessMessage("密码修改成功！");
 			}
 			
 		}else {

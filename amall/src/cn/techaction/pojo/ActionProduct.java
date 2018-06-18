@@ -1,132 +1,111 @@
 package cn.techaction.pojo;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class ActionProduct {
-	private int id;
+	private Integer id;
 	private String name;
-	private String productId;
-	private String partsId;
-	private String iconUrl;
-	private String subImages;
-	private String detail;
-	private String specParam;
-	private BigDecimal price;
-	private int stock;
-	private int status;
-	private int isHot;
-	private String created;
-	private String updated;
-
-	public int getId() {
+	private Integer productId; //产品类型ID
+	private Integer partsId;	//配件类型ID
+	private String iconUrl;		//商品主图
+	private String subImages;	//商品组图 地址
+	private String detail ;		//商品详情
+	private String specParam;	//规格参数
+	private BigDecimal price;	//商品价格
+	private Integer stock;		//库存
+	private Integer status;		//商品状态
+	private Integer hot;		//是否热销
+	private Date created;
+	private Date updated;
+	
+	
+	
+	public Integer getId() {
 		return id;
 	}
-
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-
+	
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public String getProductId() {
+	public Integer getProductId() {
 		return productId;
 	}
-
-	public void setProductId(String productId) {
+	public void setProductId(Integer productId) {
 		this.productId = productId;
 	}
-
-	public String getPartsId() {
+	public Integer getPartsId() {
 		return partsId;
 	}
-
-	public void setPartsId(String partsId) {
+	public void setPartsId(Integer partsId) {
 		this.partsId = partsId;
 	}
-
 	public String getIconUrl() {
 		return iconUrl;
 	}
-
 	public void setIconUrl(String iconUrl) {
 		this.iconUrl = iconUrl;
 	}
-
 	public String getSubImages() {
 		return subImages;
 	}
-
 	public void setSubImages(String subImages) {
 		this.subImages = subImages;
 	}
-
 	public String getDetail() {
 		return detail;
 	}
-
 	public void setDetail(String detail) {
 		this.detail = detail;
 	}
-
 	public String getSpecParam() {
 		return specParam;
 	}
-
 	public void setSpecParam(String specParam) {
 		this.specParam = specParam;
 	}
-
 	public BigDecimal getPrice() {
 		return price;
 	}
-
 	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
-
-	public int getStock() {
+	public Integer getStock() {
 		return stock;
 	}
-
-	public void setStock(int stock) {
+	public void setStock(Integer stock) {
 		this.stock = stock;
 	}
-
-	public int getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
-
-	public void setStatus(int status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
-
-	public int getIsHot() {
-		return isHot;
+	public Integer getHot() {
+		return hot;
 	}
-
-	public void setIsHot(int isHot) {
-		this.isHot = isHot;
+	public void setHot(Integer hot) {
+		this.hot = hot;
 	}
-
-	public String getCreated() {
+	public Date getCreated() {
 		return created;
 	}
-
-	public void setCreated(String created) {
+	public void setCreated(Date created) {
 		this.created = created;
 	}
-
-	public String getUpdated() {
+	public Date getUpdated() {
 		return updated;
 	}
-
-	public void setUpdated(String updated) {
+	public void setUpdated(Date updated) {
 		this.updated = updated;
 	}
+	
+	
 }

@@ -39,6 +39,7 @@ public class ActionCartServiceImpl implements ActionCartService {
 		ActionCart actionCart = aCartDao.findCartByUserAndProductId(userId, productId);
 		if(actionCart==null) {
 			//不存在则，新增
+
 			ActionCart cart = new ActionCart();
 			cart.setUserId(userId);
 			cart.setProductId(productId);
@@ -60,9 +61,7 @@ public class ActionCartServiceImpl implements ActionCartService {
 		if(userId==null) {
 			return SverResponse.createByErrorMessage("参数错误！");
 		}
-		//查找该用户购物车中的商品
 		List<ActionCart> list = aCartDao.findCartByUser(userId);
-		//封装ActionCartVo对象
 		ActionCartVo cartVo = createCartVo(list);
 		return SverResponse.createRespBySuccess(cartVo);
 	}
@@ -97,7 +96,6 @@ public class ActionCartServiceImpl implements ActionCartService {
 						buyCount = cart.getQuantity();
 					}else {
 						buyCount = product.getStock();
-						//更新购物车中商品数量
 						ActionCart updateCart = new ActionCart();
 						updateCart.setId(cart.getId());
 						updateCart.setQuantity(buyCount);
