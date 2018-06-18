@@ -19,4 +19,14 @@ public interface ActionProductService {
 	 */
 	public SverResponse<PageBean<ActionProduct>> findProducts(Integer productId, Integer partsId, Integer pageNum,
 			Integer pageSize);
+	/**
+	 * 产品详细数据
+	 * @param productId
+	 * @return
+	 */
+	public SverResponse<ActionProduct> looksProducts(String productId);	
+	public SverResponse<java.util.List<ActionProduct>> gethotProducts(String num);
+	public SverResponse<String> saveOrUpdateProduct(ActionProduct product);
+	public SverResponse<String> updateStatus(Integer productId,Integer status);
+	public SverResponse<String> updateHotStatus(Integer productId,Integer isHot);
 }

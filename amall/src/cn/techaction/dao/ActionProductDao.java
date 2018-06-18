@@ -26,5 +26,9 @@ public interface ActionProductDao {
 	public List<ActionProduct> findProductsByTypeId(Integer productId, Integer partsId, Integer startIndex,
 			Integer pageSize);
 
-	public ActionProduct findProductById(Integer productId);
+	public ActionProduct findProductById(String productId);
+
+	public List<ActionProduct> findhotsProducts(String num);
+	public int insertProduct(ActionProduct product);
+	public int updateProduct(ActionProduct product);
 }
